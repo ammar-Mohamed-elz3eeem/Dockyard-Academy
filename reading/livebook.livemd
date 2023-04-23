@@ -121,20 +121,18 @@ Livebook may change this UI, so if this is instruction is no longer accurate ple
 
 Create an Elixir code cell below. Run some Elixir code such as `1 + 2` in the cell.
 
-<!-- livebook:{"break_markdown":true} -->
+```elixir
+IO.puts("Hello, World!")
+```
+
+```elixir
+1 + 2
+```
 
 ### Livebook Shortcuts
 
 Click on the keyboard shortcuts <i class="ri-keyboard-box-line"></i> icon on the sidebar to view
 available Livebook shortcuts depending on the current mode.
-
-<!-- livebook:{"break_markdown":true} -->
-
-### Navigation Mode Vs Insert Mode
-
-**Navigation mode** is the default mode. If you are editing a Markdown cell or Elixir cell, then you are in **insert mode**.
-
-For example, while in Navigation mode, you can evaluate every Elixir cell in a Livebook notebook by pressing <kbd>e</kbd> and then <kbd>a</kbd>.
 
 <!-- livebook:{"break_markdown":true} -->
 
@@ -208,7 +206,7 @@ Evaluate the Elixir cell below, then change `5` to `4` to see **Evaluated** chan
 Re-evaluate the cell to see *Evaluated\** change to **Evaluated**.
 
 ```elixir
-5
+4
 ```
 
 Sometimes order of evaluation can cause issues in Exercises by using a stale version of an Elixir cell. Make sure to evaluate a code cell whenever you make a change.
@@ -222,7 +220,7 @@ Try uncommenting the following code (Remove the `#` character) then press <kbd>C
 Notice that the `1 + 1` code moves to the left.
 
 ```elixir
-# 1 + 1
+1 + 1
 ```
 
 If you have not evaluated any Elixir code cells, you may see a warning.
