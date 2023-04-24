@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 while [ "$1" != "" ] && [ "$1" != "-m" ]; do
         echo "adding $1 to the staging area"
         git add "$1"
