@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+while [ "$1" != "" ] && [ "$1" != "-m" ]; do
+        echo "adding $1 to the staging area"
+        git add "$1"
+        shift
+done;
+if ["$1" == "-m"]; then
+        echo "commit changes to local repo: DONE"
+        shift
+fi
+if ["$1" == ""]; then
+        echo "you haven't provided any commit messages to commit local changes"
+else
+        git commit -m "$1"
+fi
+git push
