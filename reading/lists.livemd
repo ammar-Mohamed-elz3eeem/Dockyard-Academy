@@ -106,7 +106,7 @@ flowchart
 In the Elixir cell below, Create a list of your favourite foods as strings.
 
 ```elixir
-
+["Suchi", "Fish", "Chicken"]
 ```
 
 ## List Operators
@@ -173,13 +173,13 @@ step2 -- [2]
 In the Elixir cell below, add `[1, 2, 3]` and `[4, 5, 6]` together to make `[1, 2, 3, 4, 5, 6].`
 
 ```elixir
-
+[1, 2, 3] ++ [4, 5, 6]
 ```
 
 In the Elixir cell below, remove `[1]` from `[1, 1, 2, 3]` to make `[1, 2, 3]`
 
 ```elixir
-
+[1, 1, 2, 3] -- [1]
 ```
 
 ## Prepending
@@ -209,7 +209,8 @@ list = [2, 3]
 In the Elixir cell below, prepend `"hello"` to the list `["world"]` to make `["hello", "world"]`
 
 ```elixir
-
+list = ["world"]
+["hello" | list]
 ```
 
 ## Pattern Matching Lists
@@ -289,7 +290,8 @@ Bind `1` in the following list to a variable `a` using pattern matching.
 Enter your solution below.
 
 ```elixir
-[1, 2, 3]
+[head | tail] = [1, 2, 3]
+head
 ```
 
 Bind `1` in the following list to a variable `a` using pattern matching.
@@ -306,7 +308,8 @@ Bind `1` in the following list to a variable `a` using pattern matching.
 Enter your solution below.
 
 ```elixir
-[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+[head | tail] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+head
 ```
 
 Bind `1` and `2`, and `3` in the following list to variables `a`, `b`, and `c` using pattern matching.
@@ -323,7 +326,8 @@ Bind `1` and `2`, and `3` in the following list to variables `a`, `b`, and `c` u
 Enter your solution below.
 
 ```elixir
-[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+[one, two, three | _rest] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+one + two + three
 ```
 
 ## Further Reading

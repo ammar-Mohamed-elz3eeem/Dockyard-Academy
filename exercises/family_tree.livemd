@@ -172,7 +172,47 @@ family_tree = arthur
 Enter your solution below.
 
 ```elixir
+family_tree = %{name: "Arthur", age: 22, status: :child, parents: []}
 
+family_tree = %{
+  family_tree
+  | parents: [%{name: "Ygraine", age: 45, status: :parent, parents: []} | family_tree[:parents]]
+}
+
+family_tree = %{
+  family_tree
+  | parents: [%{name: "Uther", age: 56, status: :parent, parents: []} | family_tree[:parents]]
+}
+
+family_tree = %{
+  family_tree
+  | parents: [
+      %{
+        hd(family_tree.parents)
+        | parents: [
+            %{name: "Han", status: :grand_parent, age: 81, parents: []},
+            %{name: "Leia", status: :grand_parent, age: 82, parents: []}
+          ]
+      }
+      | tl(family_tree.parents)
+    ]
+}
+
+family_tree = %{
+  family_tree
+  | parents: [
+      hd(family_tree.parents)
+      | [
+          %{
+            hd(tl(family_tree.parents))
+            | parents: [
+                %{name: "Bob", status: :grand_parent, age: 68, parents: []},
+                %{name: "Bridget", status: :grand_parent, age: 70, parents: []}
+              ]
+          }
+        ]
+    ]
+}
 ```
 
 ## Commit Your Progress

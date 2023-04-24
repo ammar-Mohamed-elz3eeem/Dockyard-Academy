@@ -84,7 +84,9 @@ high = 1
 Enter your solution below.
 
 ```elixir
-
+low = -1
+normal = 0
+high = 1
 ```
 
 ## High Card
@@ -104,7 +106,8 @@ initial_count + high
 Enter your solution below.
 
 ```elixir
-
+inital_count = 0
+inital_count = inital_count + high
 ```
 
 ## Low Card
@@ -124,7 +127,8 @@ initial_count + low
 Enter your solution below.
 
 ```elixir
-
+inital_count = 0
+inital_count = inital_count + low
 ```
 
 ## Multiple Cards
@@ -146,7 +150,8 @@ You could omit the **normal** cards or allow **high** and **low** cards to balan
 Enter your solution below.
 
 ```elixir
-
+inital_count = 5
+inital_count = 5 + 5 * high + 2 * low + 2 * normal
 ```
 
 ## Bonus: Determining Card Values
@@ -188,7 +193,17 @@ You could omit the **normal** cards or allow **high** and **low** cards to balan
 Enter your solution below.
 
 ```elixir
+first_number = Enum.random(1..13)
+second_number = Enum.random(1..13)
+third_number = Enum.random(1..13)
 
+first_high_or_low? = (first_number >= 10 && 1) || (first_number >= 7 && 0) || -1
+second_high_or_low? = (second_number >= 10 && 1) || (second_number >= 7 && 0) || -1
+third_high_or_low? = (third_number >= 10 && 1) || (third_number >= 7 && 0) || -1
+
+inital_count = 0
+IO.inspect("#{first_number} #{second_number} #{third_number}")
+inital_count = first_high_or_low? + second_high_or_low? + third_high_or_low?
 ```
 
 ## Commit Your Progress
