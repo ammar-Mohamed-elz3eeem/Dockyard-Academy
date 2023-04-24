@@ -4,11 +4,11 @@ while [ "$1" != "" ] && [ "$1" != "-m" ]; do
         git add "$1"
         shift
 done;
-if ["$1" == "-m"]; then
+if [ "$1" == "-m" ]; then
         echo "commit changes to local repo: DONE"
         shift
 fi
-if ["$1" == ""]; then
+if [ "$1" == "" ]; then
         echo "you haven't provided any commit messages to commit local changes"
 else
         git commit -m "$1"
