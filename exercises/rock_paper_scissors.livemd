@@ -129,9 +129,6 @@ Enter your solution below.
 player1_choice = Enum.random([:rock, :paper, :scissors])
 player2_choice = Enum.random([:rock, :paper, :scissors])
 
-IO.inspect(player1_choice)
-IO.inspect(player2_choice)
-
 cond do
   player1_choice == player2_choice ->
     "Draw"
