@@ -102,6 +102,8 @@ defmodule Pokemon do
     iex> %Pokemon{name: "Charmander", type: :fire, speed: 20}
     %Pokemon{name: "Charmander", type: :fire, health: 20, attack: 5, speed: 20}
   """
+  @enforce_keys [:name, :type, :speed]
+  defstruct @enforce_keys ++ [health: 20, attack: 5]
 
   @doc """
   subtract the attack damage of an attacker from the defender's health.
@@ -131,6 +133,24 @@ defmodule Pokemon do
     %Pokemon{name: "Bulbasaur", type: :grass, health: 10, attack: 5, speed: 20}
   """
   def attack(attacker, defender) do
+    damage =
+      case {attacker.type, defender.type} do
+        {:fire, :grass} -> attacker.attack * 2
+        {:grass, :water} -> attacker.attack * 2
+        {:water, :fire} -> attacker.attack * 2
+        {:fire, :water} -> attacker.attack / 2
+        {:grass, :fire} -> attacker.attack / 2
+        {:water, :grass} -> attacker.attack / 2
+        _ -> attacker.attack
+      end
+
+    %Pokemon{
+      name: defender.name,
+      type: defender.type,
+      health: defender.health - damage,
+      attack: defender.attack,
+      speed: defender.speed
+    }
   end
 end
 ```
@@ -189,7 +209,18 @@ Pokemon.attack(charmander, bulbasaur)
 Enter your solution below.
 
 ```elixir
+charmander = %Pokemon{name: "Charmander", type: :fire, speed: 20}
+bulbasaur = %Pokemon{name: "Bulbasar", type: :grass, speed: 20}
+squirtle = %Pokemon{name: "Squirtle", type: :water, speed: 20}
 
+IO.inspect(charmander)
+IO.inspect(bulbasaur)
+IO.inspect(squirtle)
+
+charmander = Pokemon.attack(squirtle, charmander)
+charmander = Pokemon.attack(squirtle, charmander)
+charmander = Pokemon.attack(bulbasaur, charmander)
+IO.inspect(charmander)
 ```
 
 ## Commit Your Progress
