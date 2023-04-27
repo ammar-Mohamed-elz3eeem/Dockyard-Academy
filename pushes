@@ -1,0 +1,7 @@
+./gitauto . -m "finish Rock Paper Scissors Lizard Spock exercise"
+./gitauto . -m "finish RPG Dialogue exercise"
+./gitauto . -m "finish Pokemon Battle exercise"
+./gitauto . -m "finish Ranges reading"
+./gitauto . -m "finish Enum reading"
+./gitauto . -m "finish FizzBuzz exercise"
+./gitauto . -m "finish Named Number Lists exercise"

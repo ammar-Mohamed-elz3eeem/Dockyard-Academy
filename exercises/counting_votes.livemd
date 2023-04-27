@@ -96,6 +96,7 @@ defmodule Votes do
     0
   """
   def count(votes, vote) do
+    votes |> Enum.filter(fn el -> el == vote end) |> Enum.count()
   end
 end
 ```
@@ -136,8 +137,17 @@ defmodule VoterTally do
     %{dog: 2, cat: 3, bird: 1}
   """
   def tally(votes) do
+    Enum.reduce(votes, %{}, fn el, acc ->
+      if is_integer(acc[el]) do
+        %{acc | el => acc[el] + 1}
+      else
+        Map.put(acc, el, 1)
+      end
+    end)
   end
 end
+
+IO.inspect(VoterTally.tally([:dog, :dog, :cat, :cat, :cat, :bird]))
 ```
 
 ## Commit Your Progress
