@@ -234,7 +234,9 @@ each generator creates another nested loop and therefore has a significant perfo
 In the Elixir cell below, use a comprehension with a generator of `1..50` to create a list of even integers from `2` to `100`.
 
 ```elixir
-
+for el <- 1..50, rem(el, 2) == 0 do
+  el
+end
 ```
 
 ## Filters
@@ -327,7 +329,9 @@ end
 </details>
 
 ```elixir
-
+for i <- 1..7, j <- 1..7, k <- 1..7, i + j + k === 7 do
+  [i, j, k]
+end
 ```
 
 ## Collectables
@@ -406,7 +410,9 @@ end
 </details>
 
 ```elixir
-
+for {key, val} <- %{a: 1, b: 2}, into: %{} do
+  {"#{key}", val}
+end
 ```
 
 ## Why Use A Comprehension?
@@ -430,7 +436,9 @@ Enum.map(1..5, fn each -> each * 2 end)
 ```
 
 ```elixir
-
+for el <- 1..5 do
+  el * 2
+end
 ```
 
 In the Elixir cell below, convert the following `Enum.reduce` into a comprehension.
@@ -442,7 +450,9 @@ Enum.reduce(["a", "b", "c"], fn each, acc -> acc <> each end)
 ```
 
 ```elixir
-
+for char <- ["a", "b", "c"], into: "" do
+  char
+end
 ```
 
 In the Elixir cell below, convert the following nested `Enum.map` into a comprehension.
@@ -454,7 +464,11 @@ Enum.map(1..3, fn a -> Enum.map(1..3, fn b -> {a, b} end) end)
 ```
 
 ```elixir
-
+for i <- 1..3, into: [] do
+  for j <- 1..3, into: [] do
+    {i, j}
+  end
+end
 ```
 
 ## Commit Your Progress
