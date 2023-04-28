@@ -171,7 +171,8 @@ defmodule SafeRange do
     iex> SafeRange.range(5, 1, 1)
     []
   """
-  def range(first, last, step \\ DEFAULT) do
+  def range(first, last, step \\ 1) do
+    Enum.to_list(first..last//step)
   end
 
   @doc """
@@ -195,7 +196,12 @@ defmodule SafeRange do
     iex> SafeRange.range!(5, 1, 1)
     ** (RuntimeError) Invalid step value of: 1
   """
-  def range!(first, last, step \\ DEFAULT) do
+  def range!(first, last, step \\ 1) do
+    cond do
+      first > last and step > 0 -> raise "Invalid step value of: #{step}"
+      first < last and step < 0 -> raise "Invalid step value of: #{step}"
+      true -> Enum.to_list(first..last//step)
+    end
   end
 end
 ```
